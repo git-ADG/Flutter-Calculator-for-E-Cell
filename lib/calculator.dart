@@ -172,15 +172,15 @@ class _CalculatorState extends State<Calculator> {
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12)),
+                              borderRadius: BorderRadius.circular(25)),
                           backgroundColor:
                               isScientific ? orangeColor : operatorColor,
-                          padding: const EdgeInsets.all(16)),
+                          padding: const EdgeInsets.all(12)),
                       onPressed: () {
                         isScientific = !isScientific;
                         setState(() {});
                       },
-                      child: const Icon(Icons.currency_exchange))),
+                      child: const Icon(Icons.change_circle,size: 35,))),
             ),
             button(text: "0"),
             button(text: ".", buttonbgColor: operatorColor),
@@ -257,15 +257,15 @@ class _CalculatorState extends State<Calculator> {
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12)),
+                              borderRadius: BorderRadius.circular(25)),
                           backgroundColor:
                               isScientific ? orangeColor : operatorColor,
-                          padding: const EdgeInsets.all(16)),
+                          padding: const EdgeInsets.all(12)),
                       onPressed: () {
                         isScientific = !isScientific;
                         setState(() {});
                       },
-                      child: const Icon(Icons.currency_exchange))),
+                      child: const Icon(Icons.change_circle,size: 30,))),
             ),
             button(text: ",", buttonbgColor: operatorColor),
             button(text: "0"),
