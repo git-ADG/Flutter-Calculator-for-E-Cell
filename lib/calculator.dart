@@ -15,18 +15,43 @@ class _CalculatorState extends State<Calculator> {
       backgroundColor: Colors.black,
       body: Column(
         children: [
-          //result display
+          //i/p o/p area
           Expanded(
               child: Container(
-            color: Colors.red,
+            width: double.infinity,
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  "Input",
+                  style: TextStyle(color: Colors.white, fontSize: 48),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Output",
+                  style: TextStyle(
+                      color: Colors.white.withOpacity(0.7), fontSize: 34),
+                ),
+                SizedBox(
+                  height: 40,
+                )
+              ],
+            ),
           )),
           //buttons
           Row(
             children: [
-              button(text: "AC",buttonbgColor: operatorColor,tColor: orangeColor),
-              button(text: "<-",buttonbgColor: operatorColor),
+              button(
+                  text: "AC",
+                  buttonbgColor: operatorColor,
+                  tColor: orangeColor),
+              button(text: "<-", buttonbgColor: operatorColor),
               button(text: "", buttonbgColor: Colors.transparent),
-              button(text: "/",buttonbgColor: operatorColor),
+              button(text: "/", buttonbgColor: operatorColor),
             ],
           ),
           Row(
@@ -34,7 +59,7 @@ class _CalculatorState extends State<Calculator> {
               button(text: "7"),
               button(text: "8"),
               button(text: "9"),
-              button(text: "x",buttonbgColor: operatorColor),
+              button(text: "x", buttonbgColor: operatorColor),
             ],
           ),
           Row(
@@ -42,7 +67,7 @@ class _CalculatorState extends State<Calculator> {
               button(text: "4"),
               button(text: "5"),
               button(text: "6"),
-              button(text: "-",buttonbgColor: operatorColor),
+              button(text: "-", buttonbgColor: operatorColor),
             ],
           ),
           Row(
@@ -50,15 +75,15 @@ class _CalculatorState extends State<Calculator> {
               button(text: "1"),
               button(text: "2"),
               button(text: "3"),
-              button(text: "+",buttonbgColor: operatorColor),
+              button(text: "+", buttonbgColor: operatorColor),
             ],
           ),
           Row(
             children: [
-              button(text: "%",buttonbgColor: operatorColor),
+              button(text: "%", buttonbgColor: operatorColor),
               button(text: "0"),
-              button(text: ".",buttonbgColor: operatorColor),
-              button(text: "=",buttonbgColor: orangeColor),
+              button(text: ".", buttonbgColor: operatorColor),
+              button(text: "=", buttonbgColor: orangeColor),
             ],
           )
         ],
