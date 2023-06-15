@@ -33,7 +33,7 @@ class _CalculatorState extends State<Calculator> {
         var userInput = input;
         userInput = userInput.replaceAll("×", "*");
         userInput = userInput.replaceAll("÷", "/");
-        userInput=userInput.replaceAll("%", "/100");
+        userInput = userInput.replaceAll("%", "/100");
         Parser p = Parser();
         Expression expression = p.parse(userInput);
         ContextModel cm = ContextModel();
