@@ -1,5 +1,6 @@
 import 'package:calculator/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 class Calculator extends StatefulWidget {
   const Calculator({super.key});
@@ -9,6 +10,48 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
+  //variables
+  var input = '';
+  var output = '';
+  var operation = '';
+  var hideInput = false;
+  var outputSize = 34.0;
+
+  //click function
+  onButtonClick(value) {
+    if (value == 'AC') {
+      input = '';
+      output = '';
+      hideInput=false;
+      outputSize=34;
+    } else if (value == '<-') {
+      if (input.isNotEmpty) {
+        input = input.substring(0, input.length - 1);
+      }
+    } else if (value == '=') {
+      if (input.isNotEmpty) {
+        var userInput = input;
+        userInput = input.replaceAll("x", "*");
+        Parser p = Parser();
+        Expression expression = p.parse(userInput);
+        ContextModel cm = ContextModel();
+        var finalValue = expression.evaluate(EvaluationType.REAL, cm);
+        output = finalValue.toString();
+        if (output.endsWith(".0")) {
+          output = output.substring(0, output.length - 2);
+        }
+        input = output;
+        hideInput=true;
+        outputSize=52;
+      }
+    } else {
+      input = input + value;
+      hideInput=false;
+      outputSize=34;
+    }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,16 +68,17 @@ class _CalculatorState extends State<Calculator> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  "Input",
+                  hideInput ? '' : input,
                   style: TextStyle(color: Colors.white, fontSize: 48),
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 Text(
-                  "Output",
+                  output,
                   style: TextStyle(
-                      color: Colors.white.withOpacity(0.7), fontSize: 34),
+                      color: Colors.white.withOpacity(0.7),
+                      fontSize: outputSize),
                 ),
                 SizedBox(
                   height: 40,
@@ -101,7 +145,7 @@ class _CalculatorState extends State<Calculator> {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             backgroundColor: buttonbgColor,
             padding: const EdgeInsets.all(22)),
-        onPressed: () {},
+        onPressed: () => onButtonClick(text),
         child: Text(
           text,
           style: TextStyle(
