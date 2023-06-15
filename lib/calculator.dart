@@ -24,14 +24,15 @@ class _CalculatorState extends State<Calculator> {
       output = '';
       hideInput=false;
       outputSize=34;
-    } else if (value == '<-') {
+    } else if (value == '⌫') {
       if (input.isNotEmpty) {
         input = input.substring(0, input.length - 1);
       }
     } else if (value == '=') {
       if (input.isNotEmpty) {
         var userInput = input;
-        userInput = input.replaceAll("x", "*");
+        userInput = input.replaceAll("×", "*");
+        userInput = input.replaceAll("÷", "/");
         Parser p = Parser();
         Expression expression = p.parse(userInput);
         ContextModel cm = ContextModel();
@@ -93,9 +94,9 @@ class _CalculatorState extends State<Calculator> {
                   text: "AC",
                   buttonbgColor: operatorColor,
                   tColor: orangeColor),
-              button(text: "<-", buttonbgColor: operatorColor),
+              button(text: "⌫", buttonbgColor: operatorColor),
               button(text: "", buttonbgColor: Colors.transparent),
-              button(text: "/", buttonbgColor: operatorColor),
+              button(text: "÷", buttonbgColor: operatorColor),
             ],
           ),
           Row(
@@ -103,7 +104,7 @@ class _CalculatorState extends State<Calculator> {
               button(text: "7"),
               button(text: "8"),
               button(text: "9"),
-              button(text: "x", buttonbgColor: operatorColor),
+              button(text: "×", buttonbgColor: operatorColor),
             ],
           ),
           Row(
