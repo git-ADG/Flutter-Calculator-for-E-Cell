@@ -16,7 +16,7 @@ class _CalculatorState extends State<Calculator> {
   var operation = '';
   var hideInput = false;
   var outputSize = 34.0;
-  bool IsScientific = false;
+  bool isScientific = false;
 
   //click function
   onButtonClick(value) {
@@ -80,9 +80,9 @@ class _CalculatorState extends State<Calculator> {
               children: [
                 Text(
                   hideInput ? '' : input,
-                  style: TextStyle(color: Colors.white, fontSize: 48),
+                  style: const TextStyle(color: Colors.white, fontSize: 48),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Text(
@@ -91,14 +91,14 @@ class _CalculatorState extends State<Calculator> {
                       color: Colors.white.withOpacity(0.7),
                       fontSize: outputSize),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 )
               ],
             ),
           )),
           //buttons
-          IsScientific ? ScientificKeyboard() : Keyboard(),
+          isScientific ? scientificKeyboard() : keyboard(),
         ],
       ),
     );
@@ -128,7 +128,7 @@ class _CalculatorState extends State<Calculator> {
     ));
   }
 
-  Widget Keyboard() {
+  Widget keyboard() {
     return Column(
       children: [
         Row(
@@ -168,19 +168,19 @@ class _CalculatorState extends State<Calculator> {
           children: [
             Expanded(
               child: Container(
-                  margin: EdgeInsets.all(8),
+                  margin: const EdgeInsets.all(8),
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12)),
                           backgroundColor:
-                              IsScientific ? orangeColor : operatorColor,
+                              isScientific ? orangeColor : operatorColor,
                           padding: const EdgeInsets.all(16)),
                       onPressed: () {
-                        IsScientific = !IsScientific;
+                        isScientific = !isScientific;
                         setState(() {});
                       },
-                      child: Icon(Icons.currency_exchange))),
+                      child: const Icon(Icons.currency_exchange))),
             ),
             button(text: "0"),
             button(text: ".", buttonbgColor: operatorColor),
@@ -191,7 +191,7 @@ class _CalculatorState extends State<Calculator> {
     );
   }
 
-  Widget ScientificKeyboard() {
+  Widget scientificKeyboard() {
     return Column(
       children: [
         Row(
@@ -253,19 +253,19 @@ class _CalculatorState extends State<Calculator> {
           children: [
             Expanded(
               child: Container(
-                  margin: EdgeInsets.all(8),
+                  margin: const EdgeInsets.all(8),
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12)),
                           backgroundColor:
-                              IsScientific ? orangeColor : operatorColor,
+                              isScientific ? orangeColor : operatorColor,
                           padding: const EdgeInsets.all(16)),
                       onPressed: () {
-                        IsScientific = !IsScientific;
+                        isScientific = !isScientific;
                         setState(() {});
                       },
-                      child: Icon(Icons.currency_exchange))),
+                      child: const Icon(Icons.currency_exchange))),
             ),
             button(text: ",", buttonbgColor: operatorColor),
             button(text: "0"),
