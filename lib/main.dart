@@ -1,4 +1,4 @@
-import 'package:calculator/calculator.dart';
+import 'package:calculator/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Calculator(),
+      home: SplashScreen(),
     );
   }
 }
