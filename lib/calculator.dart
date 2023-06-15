@@ -29,12 +29,20 @@ class _CalculatorState extends State<Calculator> {
       if (input.isNotEmpty) {
         input = input.substring(0, input.length - 1);
       }
+    } else if (value == 'xⁿ') {
+      input = "$input^";
     } else if (value == '=') {
       if (input.isNotEmpty) {
         var userInput = input;
         userInput = userInput.replaceAll("×", "*");
         userInput = userInput.replaceAll("÷", "/");
         userInput = userInput.replaceAll("%", "/100");
+        userInput = userInput.replaceAll("π", "3.1415926535897932");
+        userInput = userInput.replaceAll("e", "e^1");
+        userInput = userInput.replaceAll("√", "sqrt");
+        userInput = userInput.replaceAll("sin-1", "arcsin");
+        userInput = userInput.replaceAll("cos-1", "arccos");
+        userInput = userInput.replaceAll("tan-1", "arctan");
         Parser p = Parser();
         Expression expression = p.parse(userInput);
         ContextModel cm = ContextModel();
@@ -96,7 +104,11 @@ class _CalculatorState extends State<Calculator> {
     );
   }
 
-  Widget button({text, tColor = Colors.white, buttonbgColor = buttonColor, fontSize=18.0}) {
+  Widget button(
+      {text,
+      tColor = Colors.white,
+      buttonbgColor = buttonColor,
+      fontSize = 18.0}) {
     return Expanded(
         child: Container(
       margin: const EdgeInsets.all(8),
@@ -184,20 +196,20 @@ class _CalculatorState extends State<Calculator> {
       children: [
         Row(
           children: [
-            button(text: "log", buttonbgColor: operatorColor,fontSize: 16.0),
-            button(text: "ln", buttonbgColor: operatorColor,fontSize: 16.0),
-            button(text: "sin-1", buttonbgColor: operatorColor,fontSize: 10.0),
-            button(text: "cos-1", buttonbgColor: operatorColor,fontSize: 10.0),
-            button(text: "tan-1", buttonbgColor: operatorColor,fontSize: 10.0),
+            button(text: "log", buttonbgColor: operatorColor, fontSize: 16.0),
+            button(text: "ln", buttonbgColor: operatorColor, fontSize: 16.0),
+            button(text: "sin-1", buttonbgColor: operatorColor, fontSize: 10.0),
+            button(text: "cos-1", buttonbgColor: operatorColor, fontSize: 10.0),
+            button(text: "tan-1", buttonbgColor: operatorColor, fontSize: 10.0),
           ],
         ),
         Row(
           children: [
             button(text: "(", buttonbgColor: operatorColor),
-            button(text: ")",buttonbgColor: operatorColor),
-            button(text: "sin",buttonbgColor: operatorColor,fontSize: 16.0),
-            button(text: "cos",buttonbgColor: operatorColor,fontSize: 16.0),
-            button(text: "tan", buttonbgColor: operatorColor,fontSize: 16.0),
+            button(text: ")", buttonbgColor: operatorColor),
+            button(text: "sin", buttonbgColor: operatorColor, fontSize: 16.0),
+            button(text: "cos", buttonbgColor: operatorColor, fontSize: 16.0),
+            button(text: "tan", buttonbgColor: operatorColor, fontSize: 16.0),
           ],
         ),
         Row(
@@ -212,7 +224,7 @@ class _CalculatorState extends State<Calculator> {
         ),
         Row(
           children: [
-            button(text: "xⁿ", buttonbgColor: operatorColor,fontSize: 12.0),
+            button(text: "xⁿ", buttonbgColor: operatorColor, fontSize: 12.0),
             button(text: "7"),
             button(text: "8"),
             button(text: "9"),
