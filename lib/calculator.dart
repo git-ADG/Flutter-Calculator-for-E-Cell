@@ -23,7 +23,42 @@ class _CalculatorState extends State<Calculator> {
           //buttons
           Row(
             children: [
-              button()
+              button(text: "AC",buttonbgColor: operatorColor,tColor: orangeColor),
+              button(text: "<-",buttonbgColor: operatorColor),
+              button(text: "", buttonbgColor: Colors.transparent),
+              button(text: "/",buttonbgColor: operatorColor),
+            ],
+          ),
+          Row(
+            children: [
+              button(text: "7"),
+              button(text: "8"),
+              button(text: "9"),
+              button(text: "x",buttonbgColor: operatorColor),
+            ],
+          ),
+          Row(
+            children: [
+              button(text: "4"),
+              button(text: "5"),
+              button(text: "6"),
+              button(text: "-",buttonbgColor: operatorColor),
+            ],
+          ),
+          Row(
+            children: [
+              button(text: "1"),
+              button(text: "2"),
+              button(text: "3"),
+              button(text: "+",buttonbgColor: operatorColor),
+            ],
+          ),
+          Row(
+            children: [
+              button(text: "%",buttonbgColor: operatorColor),
+              button(text: "0"),
+              button(text: ".",buttonbgColor: operatorColor),
+              button(text: "=",buttonbgColor: orangeColor),
             ],
           )
         ],
@@ -31,7 +66,7 @@ class _CalculatorState extends State<Calculator> {
     );
   }
 
-  Widget button() {
+  Widget button({text, tColor = Colors.white, buttonbgColor = buttonColor}) {
     return Expanded(
         child: Container(
       margin: const EdgeInsets.all(8),
@@ -39,13 +74,13 @@ class _CalculatorState extends State<Calculator> {
         style: ElevatedButton.styleFrom(
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-            backgroundColor: buttonColor,
+            backgroundColor: buttonbgColor,
             padding: const EdgeInsets.all(22)),
         onPressed: () {},
-        child: const Text(
-          "1",
+        child: Text(
+          text,
           style: TextStyle(
-              fontWeight: FontWeight.bold, color: Colors.white, fontSize: 18),
+              fontWeight: FontWeight.bold, color: tColor, fontSize: 18),
         ),
       ),
     ));
