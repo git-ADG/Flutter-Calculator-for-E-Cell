@@ -111,11 +111,11 @@ class _CalculatorState extends State<Calculator> {
       fontSize = 18.0}) {
     return Expanded(
         child: Container(
-      margin: const EdgeInsets.all(8),
+      margin: const EdgeInsets.all(6),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
             backgroundColor: buttonbgColor,
             padding: const EdgeInsets.all(15)),
         onPressed: () => onButtonClick(text),
