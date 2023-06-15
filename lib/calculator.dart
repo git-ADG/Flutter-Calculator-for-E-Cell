@@ -22,8 +22,8 @@ class _CalculatorState extends State<Calculator> {
     if (value == 'AC') {
       input = '';
       output = '';
-      hideInput=false;
-      outputSize=34;
+      hideInput = false;
+      outputSize = 34;
     } else if (value == '⌫') {
       if (input.isNotEmpty) {
         input = input.substring(0, input.length - 1);
@@ -31,8 +31,9 @@ class _CalculatorState extends State<Calculator> {
     } else if (value == '=') {
       if (input.isNotEmpty) {
         var userInput = input;
-        userInput = input.replaceAll("×", "*");
-        userInput = input.replaceAll("÷", "/");
+        userInput = userInput.replaceAll("×", "*");
+        userInput = userInput.replaceAll("÷", "/");
+        userInput=userInput.replaceAll("%", "/100");
         Parser p = Parser();
         Expression expression = p.parse(userInput);
         ContextModel cm = ContextModel();
@@ -42,13 +43,13 @@ class _CalculatorState extends State<Calculator> {
           output = output.substring(0, output.length - 2);
         }
         input = output;
-        hideInput=true;
-        outputSize=52;
+        hideInput = true;
+        outputSize = 52;
       }
     } else {
       input = input + value;
-      hideInput=false;
-      outputSize=34;
+      hideInput = false;
+      outputSize = 34;
     }
     setState(() {});
   }
