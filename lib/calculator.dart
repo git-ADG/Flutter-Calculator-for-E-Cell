@@ -16,6 +16,7 @@ class _CalculatorState extends State<Calculator> {
   var operation = '';
   var hideInput = false;
   var outputSize = 34.0;
+  bool IsScientific = false;
 
   //click function
   onButtonClick(value) {
@@ -89,55 +90,13 @@ class _CalculatorState extends State<Calculator> {
             ),
           )),
           //buttons
-          Row(
-            children: [
-              button(
-                  text: "AC",
-                  buttonbgColor: operatorColor,
-                  tColor: orangeColor),
-              button(text: "⌫", buttonbgColor: operatorColor),
-              button(text: "", buttonbgColor: Colors.transparent),
-              button(text: "÷", buttonbgColor: operatorColor),
-            ],
-          ),
-          Row(
-            children: [
-              button(text: "7"),
-              button(text: "8"),
-              button(text: "9"),
-              button(text: "×", buttonbgColor: operatorColor),
-            ],
-          ),
-          Row(
-            children: [
-              button(text: "4"),
-              button(text: "5"),
-              button(text: "6"),
-              button(text: "-", buttonbgColor: operatorColor),
-            ],
-          ),
-          Row(
-            children: [
-              button(text: "1"),
-              button(text: "2"),
-              button(text: "3"),
-              button(text: "+", buttonbgColor: operatorColor),
-            ],
-          ),
-          Row(
-            children: [
-              button(text: "%", buttonbgColor: operatorColor),
-              button(text: "0"),
-              button(text: ".", buttonbgColor: operatorColor),
-              button(text: "=", buttonbgColor: orangeColor),
-            ],
-          )
+          IsScientific ? ScientificKeyboard() : Keyboard(),
         ],
       ),
     );
   }
 
-  Widget button({text, tColor = Colors.white, buttonbgColor = buttonColor}) {
+  Widget button({text, tColor = Colors.white, buttonbgColor = buttonColor, fontSize=18.0}) {
     return Expanded(
         child: Container(
       margin: const EdgeInsets.all(8),
@@ -146,14 +105,163 @@ class _CalculatorState extends State<Calculator> {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             backgroundColor: buttonbgColor,
-            padding: const EdgeInsets.all(22)),
+            padding: const EdgeInsets.all(15)),
         onPressed: () => onButtonClick(text),
         child: Text(
           text,
           style: TextStyle(
-              fontWeight: FontWeight.bold, color: tColor, fontSize: 18),
+              fontWeight: FontWeight.bold, color: tColor, fontSize: fontSize),
         ),
       ),
     ));
+  }
+
+  Widget Keyboard() {
+    return Column(
+      children: [
+        Row(
+          children: [
+            button(
+                text: "AC", buttonbgColor: operatorColor, tColor: orangeColor),
+            button(text: "⌫", buttonbgColor: operatorColor),
+            button(text: "%", buttonbgColor: operatorColor),
+            button(text: "÷", buttonbgColor: operatorColor),
+          ],
+        ),
+        Row(
+          children: [
+            button(text: "7"),
+            button(text: "8"),
+            button(text: "9"),
+            button(text: "×", buttonbgColor: operatorColor),
+          ],
+        ),
+        Row(
+          children: [
+            button(text: "4"),
+            button(text: "5"),
+            button(text: "6"),
+            button(text: "-", buttonbgColor: operatorColor),
+          ],
+        ),
+        Row(
+          children: [
+            button(text: "1"),
+            button(text: "2"),
+            button(text: "3"),
+            button(text: "+", buttonbgColor: operatorColor),
+          ],
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: Container(
+                  margin: EdgeInsets.all(8),
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)),
+                          backgroundColor:
+                              IsScientific ? orangeColor : operatorColor,
+                          padding: const EdgeInsets.all(16)),
+                      onPressed: () {
+                        IsScientific = !IsScientific;
+                        setState(() {});
+                      },
+                      child: Icon(Icons.currency_exchange))),
+            ),
+            button(text: "0"),
+            button(text: ".", buttonbgColor: operatorColor),
+            button(text: "=", buttonbgColor: orangeColor),
+          ],
+        )
+      ],
+    );
+  }
+
+  Widget ScientificKeyboard() {
+    return Column(
+      children: [
+        Row(
+          children: [
+            button(text: "log", buttonbgColor: operatorColor,fontSize: 16.0),
+            button(text: "ln", buttonbgColor: operatorColor,fontSize: 16.0),
+            button(text: "sin-1", buttonbgColor: operatorColor,fontSize: 10.0),
+            button(text: "cos-1", buttonbgColor: operatorColor,fontSize: 10.0),
+            button(text: "tan-1", buttonbgColor: operatorColor,fontSize: 10.0),
+          ],
+        ),
+        Row(
+          children: [
+            button(text: "(", buttonbgColor: operatorColor),
+            button(text: ")",buttonbgColor: operatorColor),
+            button(text: "sin",buttonbgColor: operatorColor,fontSize: 16.0),
+            button(text: "cos",buttonbgColor: operatorColor,fontSize: 16.0),
+            button(text: "tan", buttonbgColor: operatorColor,fontSize: 16.0),
+          ],
+        ),
+        Row(
+          children: [
+            button(text: "e", buttonbgColor: operatorColor),
+            button(
+                text: "AC", buttonbgColor: operatorColor, tColor: orangeColor),
+            button(text: "⌫", buttonbgColor: operatorColor),
+            button(text: "%", buttonbgColor: operatorColor),
+            button(text: "÷", buttonbgColor: operatorColor),
+          ],
+        ),
+        Row(
+          children: [
+            button(text: "xⁿ", buttonbgColor: operatorColor,fontSize: 12.0),
+            button(text: "7"),
+            button(text: "8"),
+            button(text: "9"),
+            button(text: "×", buttonbgColor: operatorColor),
+          ],
+        ),
+        Row(
+          children: [
+            button(text: "√", buttonbgColor: operatorColor),
+            button(text: "4"),
+            button(text: "5"),
+            button(text: "6"),
+            button(text: "-", buttonbgColor: operatorColor),
+          ],
+        ),
+        Row(
+          children: [
+            button(text: "π", buttonbgColor: operatorColor),
+            button(text: "1"),
+            button(text: "2"),
+            button(text: "3"),
+            button(text: "+", buttonbgColor: operatorColor),
+          ],
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: Container(
+                  margin: EdgeInsets.all(8),
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)),
+                          backgroundColor:
+                              IsScientific ? orangeColor : operatorColor,
+                          padding: const EdgeInsets.all(16)),
+                      onPressed: () {
+                        IsScientific = !IsScientific;
+                        setState(() {});
+                      },
+                      child: Icon(Icons.currency_exchange))),
+            ),
+            button(text: ",", buttonbgColor: operatorColor),
+            button(text: "0"),
+            button(text: ".", buttonbgColor: operatorColor),
+            button(text: "=", buttonbgColor: orangeColor),
+          ],
+        )
+      ],
+    );
   }
 }
