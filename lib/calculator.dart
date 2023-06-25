@@ -180,7 +180,10 @@ class _CalculatorState extends State<Calculator> {
                         isScientific = !isScientific;
                         setState(() {});
                       },
-                      child: const Icon(Icons.change_circle,size: 35,))),
+                      child: const Icon(
+                        Icons.change_circle,
+                        size: 35,
+                      ))),
             ),
             button(text: "0"),
             button(text: ".", buttonbgColor: operatorColor),
@@ -265,7 +268,10 @@ class _CalculatorState extends State<Calculator> {
                         isScientific = !isScientific;
                         setState(() {});
                       },
-                      child: const Icon(Icons.change_circle,size: 30,))),
+                      child: const Icon(
+                        Icons.change_circle,
+                        size: 30,
+                      ))),
             ),
             button(text: ",", buttonbgColor: operatorColor),
             button(text: "0"),
