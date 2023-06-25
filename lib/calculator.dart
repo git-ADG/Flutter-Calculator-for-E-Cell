@@ -73,7 +73,7 @@ class _CalculatorState extends State<Calculator> {
           Expanded(
               child: Container(
             width: double.infinity,
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(6),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.end,
