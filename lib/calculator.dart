@@ -67,12 +67,11 @@ class _CalculatorState extends State<Calculator> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(gradient: LinearGradient(
-            begin: FractionalOffset(0.0, 0.0),
-            end: FractionalOffset(1.0, 1.0),
-            colors: [
-              Color(0xff434343),
-              Color(0xff000000)])),
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: FractionalOffset(0.0, 0.0),
+                end: FractionalOffset(1.0, 1.0),
+                colors: [Color(0xff434343), Color(0xff000000)])),
         child: Column(
           children: [
             //i/p o/p area
