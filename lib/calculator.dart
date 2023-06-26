@@ -66,40 +66,47 @@ class _CalculatorState extends State<Calculator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: Column(
-        children: [
-          //i/p o/p area
-          Expanded(
-              child: Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(6),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  hideInput ? '' : input,
-                  style: const TextStyle(color: Colors.white, fontSize: 48),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  output,
-                  style: TextStyle(
-                      color: Colors.white.withOpacity(0.7),
-                      fontSize: outputSize),
-                ),
-                const SizedBox(
-                  height: 40,
-                )
-              ],
-            ),
-          )),
-          //buttons
-          isScientific ? scientificKeyboard() : keyboard(),
-        ],
+      body: Container(
+        decoration: BoxDecoration(gradient: LinearGradient(
+            begin: FractionalOffset(0.0, 0.0),
+            end: FractionalOffset(1.0, 1.0),
+            colors: [
+              Color(0xff434343),
+              Color(0xff000000)])),
+        child: Column(
+          children: [
+            //i/p o/p area
+            Expanded(
+                child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(6),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    hideInput ? '' : input,
+                    style: const TextStyle(color: Colors.white, fontSize: 48),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    output,
+                    style: TextStyle(
+                        color: Colors.white.withOpacity(0.7),
+                        fontSize: outputSize),
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  )
+                ],
+              ),
+            )),
+            //buttons
+            isScientific ? scientificKeyboard() : keyboard(),
+          ],
+        ),
       ),
     );
   }
